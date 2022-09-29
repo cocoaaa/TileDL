@@ -225,21 +225,6 @@ def download_mtbmap_xyz(x: int, y: int, z: int,
     out_dir = out_dir_root / 'MtbMap'
     download_xyz_from(x, y, z, url_base, out_dir)
 
-def download_esri_xyz(x: int, y: int, z: int,
-                    out_dir_root: Union[str, Path]):
-    url_base= ts.EsriImagery
-    out_dir_root = makedir(out_dir_root)
-    out_dir = out_dir_root / 'Esri'
-    download_xyz_from(x, y, z, url_base, out_dir)
-
-def download_tiles_by_lnglat_esri(out_dir: Union[str, Path],
-                             start_long, end_long, start_lat, end_lat, zoom):
-    url_base= ts.EsriImagery
-    download_tiles_by_lnglat(out_dir, 
-                             url_base,
-                             start_long, end_long, start_lat, end_lat, zoom)
-
-
 def download_styles_xyz(x: int, y: int, z: int,
                         tile_source_name: str,
                         styles: Union[str, List],
@@ -378,8 +363,8 @@ def download_selected_styles(locations_fn: str, selection_fn: str, out_dir_root:
     for ts_class_name, styles in selection.items():
         ts_name = getattr(getattr(ts, ts_class_name), 'name')
         download_tiles_from_cities(locations_fn, ts_name, styles, out_dir_root, overwrites=overwrites)
- 
-    
+
+
 if __name__ == "__main__":
     # Argument parser
     parser = argparse.ArgumentParser()
