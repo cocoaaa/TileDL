@@ -1,4 +1,31 @@
-# Historical Map Retrieval
+# Maptile Retrieval from Esri, OSM, StamenMaps and Historical mapservers
+
+## To download Esri Imageries for Region of Interest (ROI):
+1. Specify the bounding box of the ROI in lat long as json:
+- See example in `paris.json`
+- Eg.: 
+```json
+{
+  "paris": {
+    "xmin": 2.125608,
+    "ymin": 48.758445,
+    "xmax": 2.564374,
+    "ymax": 48.992376,
+    "z": 14
+  }
+}
+2. Run the following commnad:
+```bash
+python downloader.py ./latlngs.json  -ts 'esri' -s 'imagery' -o './outs' 
+```
+- `./latlngs.json`: path to the json file for your ROI
+- `-ts`: tile server name to use. See `tile_sources.py` for tileserver we support
+- `-s`: style of the maptile. Use `imagery` for satellite images from Esri
+- `./outs`: output directory to store the retrieved maptiles. (will be created if not existing already)
+
+
+
+## Historical Map Retrieval
 The workflow for historical map retrival is as following
 
 ![flow_chart](Screenshots/flow_chart.png)
