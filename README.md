@@ -14,6 +14,7 @@
     "z": 14
   }
 }
+```
 2. Run the following commnad:
 ```bash
 python downloader.py ./latlngs.json  -ts 'esri' -s 'imagery' -o './outs' 
